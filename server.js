@@ -22,4 +22,8 @@ io.on('connection', function(socket) {
       'status': 'success',
       'time': new Date().toTimeString()
   });
+
+  socket.on('disconnect', function() {
+      socket.emit('connection_lost');
+  });
 });
