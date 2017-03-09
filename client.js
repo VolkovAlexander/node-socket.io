@@ -5,4 +5,8 @@ var io = require('socket.io-client'),
 
 socket.on('connect', function () { console.log("socket connected"); });
 
+socket.on('connection_callback', function(data) {
+    console.log(data);
+});
+
 socket.emit('client_message', { user: 'me', msg: 'whazzzup?' });
