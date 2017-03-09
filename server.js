@@ -18,21 +18,8 @@ const server = express()
 const io = socketIO(server);
 
 io.on('connection', function(socket) {
-  console.log('Client connected');
-
   socket.emit('connection_callback', {
+      'status': 'success',
       'time': new Date().toTimeString()
   });
-
-  socket.on('client_message', function(data) {
-      console.log(data);
-  });
-
-  socket.on('disconnect', function() {
-    console.log('Client disconnected');
-  });
 });
-
-setInterval(function() {
-    io.emit('time', new Date().toTimeString())
-}, 1000);
