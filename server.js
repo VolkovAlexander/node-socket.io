@@ -20,6 +20,14 @@ const io = socketIO(server);
 io.on('connection', function(socket) {
   console.log('Client connected');
 
+  socket.emit('connection_callback', {
+      'time': new Date().toTimeString()
+  });
+
+  socket.on('client_message', function(data) {
+      console.log(data);
+  });
+
   socket.on('disconnect', function() {
     console.log('Client disconnected');
   });
